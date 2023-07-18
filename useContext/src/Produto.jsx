@@ -4,6 +4,7 @@ import { GlobalContext } from './GlobalContext';
 const Produto = () => {
   const global = React.useContext(GlobalContext);
   console.log(global);
+  console.log(global);
 
   return (
     <div>
