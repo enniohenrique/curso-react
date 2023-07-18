@@ -5,6 +5,7 @@ const useLocalStorage = (key, inicial) => {
     const local = window.localStorage.getItem(key);
     return local ? local : inicial;
   });
+  console.log(state)
 
   React.useEffect(() => {
     window.localStorage.setItem(key, state);
