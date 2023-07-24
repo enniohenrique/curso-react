@@ -12,6 +12,7 @@ const App = () => {
         <option value="notebook">Notebook</option>
         <option value="smartphone">Smartphone</option>
         <option value="tablet">Tablet</option>
+        <option value="ipad">Tablet</option>
       </select>
       <p>{select}</p>
     </form>
