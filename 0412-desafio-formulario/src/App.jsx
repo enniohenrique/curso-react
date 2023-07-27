@@ -41,7 +41,6 @@ const App = () => {
   const [questoes, setQuestoes] = React.useState(perguntas[contador]);
   const [pontos, setPontos] = React.useState(0);
 
-  if (contador < perguntas.length) {
     return (
       <Form
         options={perguntas[contador]}
@@ -51,15 +50,10 @@ const App = () => {
         setContador={setContador}
         pontos={pontos}
         setPontos={setPontos}
+        perguntas={perguntas}
       />
     );
-  } else {
-    return (
-      <p>
-        Você acertou: {pontos} de {perguntas.length}
-      </p>
-    );
-  }
+  
 };
 
 export default App;

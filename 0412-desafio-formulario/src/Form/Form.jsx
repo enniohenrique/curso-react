@@ -8,6 +8,7 @@ const Form = ({
   setContador,
   pontos,
   setPontos,
+  perguntas,
 }) => {
   function handleChange({ target }) {
     setValue(target.value);
@@ -24,26 +25,33 @@ const Form = ({
     setContador((contador) => contador + 1);
     verificaResposta(options.resposta, value);
   }
-
-  return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <h2>{options.pergunta}</h2>
-        {options.opcoes.map((option) => (
-          <label key={option}>
-            <input
-              type="radio"
-              value={option}
-              checked={value === option}
-              onChange={handleChange}
-            />
-            {option}
-          </label>
-        ))}
-        <button>Enviar</button>
-      </form>
-    </>
-  );
+  if (contador < perguntas.length) {
+    return (
+      <>
+        <form onSubmit={handleSubmit}>
+          <h2>{options.pergunta}</h2>
+          {options.opcoes.map((option) => (
+            <label key={option}>
+              <input
+                type="radio"
+                value={option}
+                checked={value === option}
+                onChange={handleChange}
+              />
+              {option}
+            </label>
+          ))}
+          <button>Enviar</button>
+        </form>
+      </>
+    );
+  } else {
+    return (
+      <p>
+        Você acertou: {pontos} de {perguntas.length}
+      </p>
+    );
+  }
 };
 
 export default Form;
