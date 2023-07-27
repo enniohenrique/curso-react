@@ -1,5 +1,5 @@
 import React from 'react';
-import Radio from './Form/Radio';
+import Form from './Form/Form';
 
 const perguntas = [
   {
@@ -41,32 +41,24 @@ const App = () => {
   const [questoes, setQuestoes] = React.useState(perguntas[contador]);
   const [pontos, setPontos] = React.useState(0);
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    setContador((contador) => contador + 1);
-    setQuestoes(perguntas[contador]);
-    verificaResposta(perguntas[contador].resposta, 'a');
-  }
-
-  function verificaResposta(respostaCorreta, respostaUsuario) {
-    if (respostaCorreta === respostaUsuario) {
-      setPontos((pontos) => pontos + 1);
-    }
-  }
   if (contador < perguntas.length) {
     return (
-      <form onSubmit={handleSubmit}>
-        <Radio
-          options={perguntas[contador]}
-          value={questoes}
-          setValue={setQuestoes}
-        />
-
-        <button>Próximo</button>
-      </form>
+      <Form
+        options={perguntas[contador]}
+        value={questoes}
+        setValue={setQuestoes}
+        contador={contador}
+        setContador={setContador}
+        pontos={pontos}
+        setPontos={setPontos}
+      />
     );
   } else {
-    return <p>pontos: {pontos}</p>;
+    return (
+      <p>
+        Você acertou: {pontos} de {perguntas.length}
+      </p>
+    );
   }
 };
 
